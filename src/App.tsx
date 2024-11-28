@@ -1,25 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // React Router 임포트
 import './App.css';
+import { Header } from './components/common/Header';
+import { AboutUsPage } from './pages/AboutUsPage';
+import { AdminPage } from './pages/AdminPage';
+import { CommunityPage } from './pages/CommunityPage';
+import { MainPage } from './pages/MainPage';
+import { ProjectPage } from './pages/ProjectPage';
+import { GenerationPage } from './pages/GenerationPage';
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <Header /> {/* 모든 페이지에 공통으로 보이는 헤더 */}
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/about" element={<AboutUsPage />} />
+          <Route path="/admin" element={<AdminPage />} />
+          <Route path="/community" element={<CommunityPage />} />
+          <Route path="/generation" element={<GenerationPage/>}></Route>
+          <Route path="/project" element={<ProjectPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
